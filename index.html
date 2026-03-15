@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barber Studio 25</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:#0b0b0b;
+color:white;
+}
+
+header{
+height:90vh;
+background:url("https://images.unsplash.com/photo-1621605815971-fbc98d665033") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.overlay{
+background:rgba(0,0,0,0.65);
+padding:60px;
+border-radius:10px;
+}
+
+.logo{
+font-family:Oswald;
+font-size:50px;
+letter-spacing:4px;
+}
+
+.subtitle{
+margin-top:10px;
+opacity:.8;
+}
+
+button{
+background:#c59d5f;
+border:none;
+padding:15px 25px;
+margin-top:20px;
+font-weight:600;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+opacity:.85;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.service{
+background:#111;
+padding:25px;
+border-radius:8px;
+text-align:center;
+border:1px solid #222;
+transition:.3s;
+}
+
+.service:hover{
+transform:translateY(-5px);
+}
+
+.price{
+color:#c59d5f;
+font-size:22px;
+margin-top:10px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:6px;
+}
+
+.booking{
+background:#111;
+padding:30px;
+border-radius:10px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#0b0b0b;
+border:1px solid #333;
+color:white;
+}
+
+.calendar{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
+gap:10px;
+margin-top:15px;
+}
+
+.slot{
+background:#1b1b1b;
+padding:10px;
+text-align:center;
+border-radius:5px;
+cursor:pointer;
+}
+
+.slot:hover{
+background:#c59d5f;
+}
+
+.booked{
+background:#7f1d1d;
+cursor:not-allowed;
+}
+
+.map{
+margin-top:30px;
+}
+
+footer{
+background:#000;
+text-align:center;
+padding:40px;
+margin-top:50px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#25D366;
+color:white;
+padding:16px 20px;
+border-radius:50px;
+font-weight:600;
+text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,.4);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="overlay">
+
+<div class="logo">BARBER STUDIO 25</div>
+
+<div class="subtitle">
+Barbería profesional · Monte Castro
+</div>
+
+<button onclick="document.getElementById('reservar').scrollIntoView()">
+Reservar Turno
+</button>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<h2>Servicios</h2>
+
+<div class="services">
+
+<div class="service">
+<h3>Corte de Cabello</h3>
+<div class="price">$14.000</div>
+<p>Duración 30 min</p>
+</div>
+
+<div class="service">
+<h3>Corte + Barba</h3>
+<div class="price">$16.000</div>
+<p>Duración 45 min</p>
+</div>
+
+<div class="service">
+<h3>Barba</h3>
+<div class="price">$10.000</div>
+<p>Duración 15 min</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="container">
+
+<h2>Trabajos</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186">
+<img src="https://images.unsplash.com/photo-1593702288056-f4a6a7b2f9c4">
+<img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c">
+<img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1">
+
+</div>
+
+</div>
+
+
+<div class="container booking" id="reservar">
+
+<h2>Reservar turno</h2>
+
+<select id="servicio">
+<option>Corte de cabello</option>
+<option>Corte y barba</option>
+<option>Barba</option>
+</select>
+
+<input type="date" id="fecha">
+
+<div class="calendar" id="horarios"></div>
+
+<input placeholder="Nombre" id="nombre">
+
+<input placeholder="Teléfono" id="telefono">
+
+<button onclick="reservar()">Confirmar turno</button>
+
+</div>
+
+
+<div class="container map">
+
+<h2>Ubicación</h2>
+
+<iframe
+width="100%"
+height="350"
+style="border:0"
+loading="lazy"
+allowfullscreen
+src="https://www.google.com/maps?q=Sanabria+1894+Monte+Castro&output=embed">
+</iframe>
+
+</div>
+
+
+<footer>
+
+<p>📍 Sanabria 1894 · Monte Castro · CABA</p>
+<p>📞 11 6409 1400</p>
+
+<p>Martes a Viernes 9-13 y 15-20 · Sábados 10-18</p>
+
+</footer>
+
+<a class="whatsapp" href="https://wa.me/5491164091400" target="_blank">WhatsApp</a>
+
+<script>
+
+const horarios=[
+"09:00","09:30","10:00","10:30",
+"11:00","11:30","12:00","12:30",
+"15:00","15:30","16:00","16:30",
+"17:00","17:30","18:00","18:30","19:00","19:30"
+]
+
+let horaSeleccionada=null
+
+const cont=document.getElementById("horarios")
+
+function cargarHorarios(){
+
+cont.innerHTML=""
+
+const fecha=document.getElementById("fecha").value
+
+if(!fecha) return
+
+const dia=new Date(fecha).getDay()
+
+if(dia===0 || dia===1){
+
+cont.innerHTML="<div style='grid-column:1/-1;text-align:center;color:#c59d5f'>La barbería está cerrada domingos y lunes</div>"
+
+return
+
+}
+
+let reservas=JSON.parse(localStorage.getItem("reservas")||"{}")
+
+let ocupados=reservas[fecha]||[]
+
+horarios.forEach(h=>{
+
+let div=document.createElement("div")
+div.className="slot"
+div.innerText=h
+
+if(ocupados.includes(h)){
+div.classList.add("booked")
+}
+
+
+div.onclick=()=>{
+
+if(div.classList.contains("booked")) return
+
+ document.querySelectorAll(".slot").forEach(s=>s.style.background="#1b1b1b")
+
+ div.style.background="#c59d5f"
+
+ horaSeleccionada=h
+
+}
+
+cont.appendChild(div)
+
+})
+
+}
+
+document.getElementById("fecha").addEventListener("change",cargarHorarios)
+
+function reservar(){
+
+const nombre=document.getElementById("nombre").value
+const telefono=document.getElementById("telefono").value
+const servicio=document.getElementById("servicio").value
+const fecha=document.getElementById("fecha").value
+
+const dia=new Date(fecha).getDay()
+
+if(dia===0 || dia===1){
+alert("La barbería no trabaja domingos ni lunes")
+return
+}
+
+if(!horaSeleccionada){
+alert("Elegí un horario")
+return
+}
+
+let reservas=JSON.parse(localStorage.getItem("reservas")||"{}")
+
+if(!reservas[fecha]) reservas[fecha]=[]
+
+reservas[fecha].push(horaSeleccionada)
+
+localStorage.setItem("reservas",JSON.stringify(reservas))
+
+let mensaje=`Hola quiero reservar turno %0A
+Nombre: ${nombre}%0A
+Servicio: ${servicio}%0A
+Fecha: ${fecha}%0A
+Hora: ${horaSeleccionada}`
+
+window.open(`https://wa.me/5491164091400?text=${mensaje}`)
+
+alert("Turno reservado")
+
+cargarHorarios()
+
+}
+
+</script>
+
+</body>
+</html>
